@@ -6,14 +6,19 @@
                 
             </ol>
             <div class="carousel-inner" role="listbox">
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('images/banner1.jpg')">
+              
+                <div class="carousel-item active" style="background-image: url('images/banner22.jpg')">
                     <div class="carousel-caption d-none d-md-block">
                        
                     </div>
                 </div>
-                <!-- Slide Two - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('images/banner2.jpg')">
+         
+                <div class="carousel-item" style="background-image: url('images/banner211.jpg')">
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+               
+                <div class="carousel-item" style="background-image: url('images/banner3.jpg')">
                     <div class="carousel-caption d-none d-md-block">
                     </div>
                 </div>

@@ -116,75 +116,101 @@ echo "<script>alert('Email-id already exist. Please try again');</script>";
 
 	<!-- about -->
 	<section class="about py-5">
-		<div class="container py-xl-5 py-lg-3">
- <div class="login px-4 mx-auto mw-100">
-                            <h5 class="text-center mb-4">Register Now</h5>
-                            <form action="#" method="post"  name="signup" onsubmit="return checkpass();">
-                                <div class="form-group">
-                                    <label>Full Name</label>
-                                     <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name">
+	<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg rounded">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Register Now</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post" name="signup" onsubmit="return checkpass();">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <div class="form-group">
-                                    <label>Mobile Number</label>
-                                    <input type="text" class="form-control" name="mobileno" id="mobileno" required="true" placeholder="Mobile Number" maxlength="10" pattern="[0-9]+">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="mb-2">Email Id</label>
-                                    <input type="email" name="emailid" class="form-control" placeholder="Email Id">
-                                </div>
-                                <div class="form-group">
-                                    <label class="mb-2">Age</label>
-                                    <input type="text" class="form-control" name="age" id="age" placeholder="Age" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="mb-2">Gender</label>
-                                    <select name="gender" class="form-control" required>
-<option value="">Select</option>
-<option value="Male">Male</option>
-<option value="Female">Female</option>
-</select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="mb-2">Blood Group</label>
-                                    <select name="bloodgroup" class="form-control" required>
-<?php $sql = "SELECT * from  tblbloodgroup ";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{               ?>  
-<option value="<?php echo htmlentities($result->BloodGroup);?>"><?php echo htmlentities($result->BloodGroup);?></option>
-<?php }} ?>
-</select>
-                                </div>
-                               
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control" name="address" id="address" required="true" placeholder="Address">
-                                </div>
-                                <div class="form-group">
-                                    <label>Message</label>
-                                    <textarea class="form-control" name="message" required> </textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" required="">
-                                </div>
-                               
-                                <button type="submit" class="btn btn-primary submit mb-4" name="submit">Register</button>
-                              
-                                 <p class="account-w3ls text-center pb-4" style="color:#000">
-                                   Already Registered?
-                                    <a href="login.php" >Signin now</a>
-                                </p>
-                            </form>
+                                <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name" required>
+                            </div>
                         </div>
-			
-		</div>
+                        <div class="form-group">
+                            <label for="mobileno">Mobile Number</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+                                <input type="text" class="form-control" name="mobileno" id="mobileno" placeholder="Mobile Number" maxlength="10" pattern="[0-9]+" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailid">Email Id</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input type="email" class="form-control" name="emailid" id="emailid" placeholder="Email Id" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                </div>
+                                <input type="number" class="form-control" name="age" id="age" placeholder="Age" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select name="gender" class="form-control" id="gender" required>
+                                <option value="">Select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bloodgroup">Blood Group</label>
+                            <select name="bloodgroup" class="form-control" id="bloodgroup" required>
+                                <?php 
+                                $sql = "SELECT * from tblbloodgroup";
+                                $query = $dbh->prepare($sql);
+                                $query->execute();
+                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                if ($query->rowCount() > 0) {
+                                    foreach ($results as $result) { ?>  
+                                    <option value="<?php echo htmlentities($result->BloodGroup);?>">
+                                        <?php echo htmlentities($result->BloodGroup);?>
+                                    </option>
+                                <?php }} ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea class="form-control" name="address" id="address" placeholder="Address" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" name="message" id="message" placeholder="Message" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" name="submit">Register</button>
+                    </form>
+                    <p class="text-center mt-3">Already Registered? <a href="login.php">Signin now</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 	</section>
 	<!-- //about -->
 

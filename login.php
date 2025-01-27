@@ -85,31 +85,55 @@ echo "<script>alert('Invalid Details');</script>";
 
 	<!-- about -->
 	<section class="about py-5">
-		<div class="container py-xl-5 py-lg-3">
-<div class="login px-4 mx-auto mw-100">
-                            <h5 class="text-center mb-4">Login Now</h5>
-                            <form action="#" method="post" name="login">
-                                <div class="form-group">
-                                    <label>Email ID</label>
-                                    <input type="email" class="form-control" name="email" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="mb-2">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="" required="">
-                                </div>
-                                <button type="submit" class="btn submit mb-4" name="login">Login</button>
-                            <!--     <p class="forgot-w3ls text-center pb-4">
-                                    <a href="#" class="text-white">Forgot your password?</a>
-                                </p> -->
-                                <p class="account-w3ls text-center pb-4" style="color:#000">
-                                    Don't have an account?
-                                    <a href="sign-up.php" >Create one now</a>
-                                </p>
-                            </form>
+    <div class="container py-xl-5 py-lg-3">
+        <div class="login px-4 mx-auto mw-100" style="max-width: 400px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); padding: 30px;">
+            <h5 class="text-center mb-4" style="font-weight: bold; color: #333;">Login Now</h5>
+            <form action="#" method="post" name="login">
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" style="font-weight: 600; color: #555;">Email ID</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="border-radius: 50px 0 0 50px;">
+                                <i class="fas fa-envelope"></i>
+                            </span>
                         </div>
-			
-		</div>
-	</section>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" style="border-radius: 0 50px 50px 0; padding: 10px 20px; border: 1px solid #ddd;" required="">
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password" class="mb-2" style="font-weight: 600; color: #555;">Password</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="border-radius: 50px 0 0 50px;">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" style="border-radius: 0 50px 50px 0; padding: 10px 20px; border: 1px solid #ddd;" required="">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary submit mb-4" name="login" style="width: 100%; border-radius: 50px; padding: 10px 20px; font-size: 16px; background-color: #007bff; color: #fff;">
+                    Login
+                </button>
+
+                <!-- Account Redirect -->
+                <p class="account-w3ls text-center pb-4" style="color:#333; font-weight: 500;">
+                    Don't have an account?
+                    <a href="sign-up.php" style="color: #007bff; text-decoration: none;">Create one now</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Font Awesome Integration -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
 	<!-- //about -->
 
 

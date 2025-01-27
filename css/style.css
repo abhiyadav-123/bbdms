@@ -104,7 +104,7 @@ a:hover {
     height: 38px;
     border: none;
     text-indent: 100%;
-    background: url(../images/move-top.png) no-repeat 0px 0px;
+    background: url(../images/bg3.jpg) no-repeat 0px 0px;
 }
 
 #toTopHover {
@@ -284,7 +284,7 @@ a.login-button:hover {
 /* //login button */
 /* modal */
 .modal-content {
-    background: url(../images/bg1.jpg) no-repeat left;
+    background: url(../images/bg6.jpg) no-repeat left;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -356,14 +356,14 @@ button.submit:hover {
 /* //modal */
 /* //header 2 */
 /* banner */
-.banner-top1,
+.banner,
 .banner-top2,
 .banner-top3 {
-    height: 50vw;
+    height: 30vw;
 }
 
-.banner-top1 {
-    background: url(../images/banner1.jpg) no-repeat 0px 0px;
+.banner {
+    background: url(../images/banner22.jpg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -372,7 +372,7 @@ button.submit:hover {
 }
 
 .banner-top2 {
-    background: url(../images/1.jpg) no-repeat 0px 0px;
+    background: url(../images/banner211.jpg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -381,7 +381,7 @@ button.submit:hover {
 }
 
 .banner-top3 {
-    background: url(../images/banner2.jpg) no-repeat 0px 0px;
+    background: url(../images/banner3.jpg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -629,7 +629,7 @@ a.w3ls-button-agile:hover {
 /* //responsive slide */
 /* banner bottom */
 .banner-bottom.py-5 {
-    background: url(../images/bg1.jpg) no-repeat top;
+    /* background: url(../images/bg1.jpg) no-repeat top; */
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -864,95 +864,35 @@ h3.title {
 
 /* //treatments */
 /* footer */
-footer {
-    background: url(../images/bg3.jpg) no-repeat center fixed;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
+/* Hover effect for footer links */
+footer a:hover {
+    color: #ff6347; /* Tomato color on hover */
+    text-decoration: none;
 }
 
-.w3l-footer h2 a {
-    font-size: 40px;
-    letter-spacing: 1px;
-}
-
-.w3l-footer h3 {
-    font-size: 26px;
-}
-
-.w3l-footer p,
-.w3l-footer p a,
-.w3l-footer ul li a {
+/* Footer text styling */
+footer p, footer ul li {
     font-size: 14px;
-    color: #efefef;
-    letter-spacing: 1px;
 }
 
-.w3l-footer ul li i {
-    color: #f44336;
-    line-height: 2;
+/* Footer title (Address, Quick Links, etc.) */
+footer h3 {
+    font-size: 18px;
+    font-weight: bold;
 }
 
-/* copyright */
-p.copy-right-grids {
-    font-size: 14px;
-    color: #fff;
-    letter-spacing: 2px;
+/* Styling the footer container for a cleaner look */
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-p.copy-right-grids a {
-    color: #f44336;
+/* Icon styling */
+footer .fa {
+    font-size: 18px;
+    margin-right: 10px;
 }
 
-p.copy-right-grids a:hover {
-    color: #fff;
-}
-
-/* //copyright */
-/* social-icons */
-.agileits_social_list li {
-    display: inline-block;
-}
-
-.agileits_social_list li a {
-    width: 35px;
-    height: 35px;
-    color: #000;
-    text-align: center;
-    display: inline-block;
-    font-size: 15px;
-    line-height: 2.3;
-    border: 1px solid #e6e6e6;
-}
-
-.agileits_social_list li a:hover {
-    color: #fff;
-}
-
-a.w3_agile_facebook:hover {
-    background: #3b5998;
-    border-color: #3b5998;
-}
-
-a.agile_twitter:hover {
-    background: #1da1f2;
-    border-color: #1da1f2;
-}
-
-a.w3_agile_dribble:hover {
-    background: #ea4c89;
-    border-color: #ea4c89;
-}
-
-a.w3_agile_google:hover {
-    background: #F44336;
-    border-color: #F44336;
-}
-
-/* //social-icons */
-/* //footer */
 /* inner pages */
 /* about page */
 .inner-banner-w3ls {
@@ -1910,7 +1850,7 @@ label.col-form-label {
         margin: 0 auto;
     }
 
-    .banner-top1,
+    .banner,
     .banner-top2,
     .banner-top3 {
         height: 60vw;
@@ -1971,7 +1911,7 @@ label.col-form-label {
         padding: 0 10px;
     }
 
-    .banner-top1,
+    .banner,
     .banner-top2,
     .banner-top3 {
         height: 74vw;
@@ -2074,7 +2014,7 @@ label.col-form-label {
         font-size: 24px;
     }
 
-    .banner-top1,
+    .banner,
     .banner-top2,
     .banner-top3 {
         height: 80vw;
@@ -2172,7 +2112,7 @@ label.col-form-label {
         padding-top: 5.5em;
     }
 
-    .banner-top1,
+    .banner,
     .banner-top2,
     .banner-top3 {
         height: 90vw;
@@ -2256,7 +2196,7 @@ label.col-form-label {
         right: 75%;
     }
 
-    .banner-top1,
+    .banner,
     .banner-top2,
     .banner-top3 {
         height: 96vw;
@@ -2316,7 +2256,7 @@ label.col-form-label {
         font-size: 23px;
     }
 
-    .banner-top1,
+    .banner,
     .banner-top2,
     .banner-top3 {
         height: 114vw;

@@ -88,47 +88,82 @@ echo "<script>alert('Something went wrong. Please try again.');</script>";
 	</div>
 	<!-- //page details -->
 
-	<!-- contact -->
-	<div class="agileits-contact py-5">
-		<div class="py-xl-5 py-lg-3">
-			<div class="w3ls-titles text-center mb-5">
-				<h3 class="title">Contact Us</h3>
-				<span>
-					<i class="fas fa-user-md"></i>
-				</span>
-				<p class="mt-2">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-			</div>
-			<div class="d-flex">
-				<div class="col-lg-5 w3_agileits-contact-left">
-				</div>
-				<div class="col-lg-7 contact-right-w3l">
-					<h5 class="title-w3 text-center mb-5">Get In Touch</h5>
-					<form action="#" method="post">
-						<div class="d-flex space-d-flex">
-							<div class="form-group grid-inputs">
-								 <input type="text" class="form-control" id="name" name="fullname" placeholder="Please enter your name.">
-							</div>
-							<div class="form-group grid-inputs">
-								<input type="tel" class="form-control" id="phone" name="contactno"  placeholder="Please enter your phone number.">
-							</div>
-						</div>
-						<div class="form-group">
-							<input type="email" class="form-control" id="email" name="email" required placeholder="Please enter your email address.">
-						</div>
-						
+	<!-- Contact -->
+<div class="agileits-contact py-5" style="background-color: #f9f9f9;">
+    <div class="py-xl-5 py-lg-3">
+        <!-- Contact Section Title -->
+        <div class="w3ls-titles text-center mb-5">
+            <h3 class="title" style="font-size: 2.5rem; font-weight: bold; color: #333;">Contact Us</h3>
+            <span>
+                <i class="fas fa-user-md" style="font-size: 2rem; color: #007bff;"></i>
+            </span>
+            <p class="mt-2" style="color: #666; font-size: 1rem;">We'd love to hear from you! Feel free to reach out to us with any inquiries.</p>
+        </div>
 
-						<div class="form-group">
-							<textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Please enter your message" maxlength="999" style="resize:none"></textarea>
-						</div>
-						<div class="form-group">
-							<input type="submit" value="Send Message" name="send">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //contact -->
+        <div class="d-flex justify-content-center">
+            <div class="col-lg-7 contact-right-w3l" style="background: #ffffff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                <h5 class="title-w3 text-center mb-5" style="font-weight: bold; color: #333;">Get In Touch</h5>
+                <form action="#" method="post">
+                    <!-- Name and Phone Fields -->
+                    <div class="d-flex space-d-flex mb-4">
+                        <div class="form-group grid-inputs" style="flex: 1; margin-right: 10px;">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="border-radius: 50px 0 0 50px;">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" id="name" name="fullname" placeholder="Please enter your name" style="border-radius: 0 50px 50px 0; padding: 10px 20px; border: 1px solid #ddd;" required>
+                            </div>
+                        </div>
+                        <div class="form-group grid-inputs" style="flex: 1;">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="border-radius: 50px 0 0 50px;">
+                                        <i class="fas fa-phone"></i>
+                                    </span>
+                                </div>
+                                <input type="tel" class="form-control" id="phone" name="contactno" placeholder="Please enter your phone number" style="border-radius: 0 50px 50px 0; padding: 10px 20px; border: 1px solid #ddd;" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group mb-4">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="border-radius: 50px 0 0 50px;">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Please enter your email address" style="border-radius: 0 50px 50px 0; padding: 10px 20px; border: 1px solid #ddd;" required>
+                        </div>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div class="form-group mb-4">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="border-radius: 15px 0 0 15px; align-items: flex-start; padding-top: 10px;">
+                                    <i class="fas fa-comment-alt"></i>
+                                </span>
+                            </div>
+                            <textarea rows="5" class="form-control" id="message" name="message" placeholder="Please enter your message" style="border-radius: 0 15px 15px 0; padding: 10px 20px; border: 1px solid #ddd; resize: none;" maxlength="999" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary" name="send" style="width: 100%; border-radius: 50px; padding: 10px 20px; font-size: 16px; background-color: #007bff; color: #fff; border: none;">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Font Awesome Integration -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 
 	
 

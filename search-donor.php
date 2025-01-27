@@ -42,168 +42,133 @@ include('includes/config.php');
 <body>
 	<?php include('includes/header.php');?>
 
-	<!-- banner 2 -->
-	<div class="inner-banner-w3ls">
-		<div class="container">
+	<!-- Updated Blood Donor List -->
 
-		</div>
-		<!-- //banner 2 -->
-	</div>
-	<!-- page details -->
-	<div class="breadcrumb-agile">
-		<div aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-					<a href="index.php">Home</a>
-				</li>
-				<li class="breadcrumb-item active" aria-current="page">Blood Donar List</li>
-			</ol>
-		</div>
-	</div>
-	<!-- //page details -->
-
-	<!-- contact -->
-	<div class="agileits-contact py-5">
-		<div class="py-xl-5 py-lg-3">
-			<form name="donar" method="post" style="padding-left: 30px;">
-<div class="row">
-
-
-
-<div class="col-lg-4 mb-4">
-<div class="font-italic">Blood Group<span style="color:red">*</span> </div>
-<div><select name="bloodgroup" class="form-control" required>
-<?php $sql = "SELECT * from  tblbloodgroup ";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{               ?>  
-<option value="<?php echo htmlentities($result->BloodGroup);?>"><?php echo htmlentities($result->BloodGroup);?></option>
-<?php }} ?>
-</select>
-</div>
+<!-- Page Header -->
+<div class="inner-banner-w3ls">
+    <div class="container"></div>
 </div>
 
-
-<div class="col-lg-4 mb-4">
-<div class="font-italic">Location </div>
-<div><textarea class="form-control" name="location"></textarea></div>
+<div class="breadcrumb-agile">
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blood Donor List</li>
+        </ol>
+    </div>
 </div>
 
+<div class="agileits-contact py-5" style="font-family: Arial, sans-serif;">
+    <div class="py-xl-5 py-lg-3">
+        <!-- Blood Group Selection Form -->
+        <form name="donar" method="post" style="padding-left: 30px;">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div style="font-weight: bold; margin-bottom: 5px;">Blood Group<span style="color:red">*</span></div>
+                    <div>
+                        <select name="bloodgroup" class="form-control" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                            <?php
+                            $sql = "SELECT * from tblbloodgroup";
+                            $query = $dbh->prepare($sql);
+                            $query->execute();
+                            $results = $query->fetchAll(PDO::FETCH_OBJ);
+                            if ($query->rowCount() > 0) {
+                                foreach ($results as $result) { ?>  
+                                    <option value="<?php echo htmlentities($result->BloodGroup); ?>"><?php echo htmlentities($result->BloodGroup); ?></option>
+                                <?php }
+                            } ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div style="font-weight: bold; margin-bottom: 5px;">Location</div>
+                    <div>
+                        <textarea class="form-control" name="location" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <input type="submit" name="sub" value="Submit" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                </div>
+            </div>
+        </form>
+
+        <!-- Display Blood Donors -->
+        <?php
+        if (isset($_POST['sub'])) {
+            $status = 1;
+            $bloodgroup = $_POST['bloodgroup'];
+            $location = $_POST['location'];
+
+            $sql = "SELECT * from tblblooddonars where (status=:status and BloodGroup=:bloodgroup) || (Address=:location)";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':status', $status, PDO::PARAM_STR);
+            $query->bindParam(':bloodgroup', $bloodgroup, PDO::PARAM_STR);
+            $query->bindParam(':location', $location, PDO::PARAM_STR);
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_OBJ);
+
+            if ($query->rowCount() > 0) { ?>
+                <div style="text-align: center; margin-top: 20px;">
+                    <h3 style="color: #007bff; font-weight: bold;">Search Blood Donor</h3>
+                </div>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; justify-content: center;">
+                    <?php foreach ($results as $result) { ?>
+                        <div style="width: 300px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; background-color: #fff;">
+                            <div style="background-color: #007bff; color: #fff; text-align: center; padding: 20px;">
+                                <i class="fas fa-user-circle" style="font-size: 50px;"></i>
+                                <h4 style="margin: 10px 0 0;"><?php echo htmlentities($result->FullName); ?></h4>
+                            </div>
+                            <div style="padding: 15px;">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tbody>
+                                        <tr>
+                                            <th style="text-align: left; padding: 5px 0; color: #555;">Gender:</th>
+                                            <td style="text-align: right; color: #333;"><?php echo htmlentities($result->Gender); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: left; padding: 5px 0; color: #555;">Blood Group:</th>
+                                            <td style="text-align: right; color: #333;"><?php echo htmlentities($result->BloodGroup); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: left; padding: 5px 0; color: #555;">Mobile:</th>
+                                            <td style="text-align: right; color: #333;"><?php echo htmlentities($result->MobileNumber); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: left; padding: 5px 0; color: #555;">Email:</th>
+                                            <td style="text-align: right; color: #333;"><?php echo htmlentities($result->EmailId); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: left; padding: 5px 0; color: #555;">Age:</th>
+                                            <td style="text-align: right; color: #333;"><?php echo htmlentities($result->Age); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: left; padding: 5px 0; color: #555;">Address:</th>
+                                            <td style="text-align: right; color: #333;"><?php echo htmlentities($result->Address); ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="text-align: center; padding: 10px; background-color: #f9f9f9;">
+                                <a href="contact-blood.php?cid=<?php echo $result->id; ?>" style="background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Request</a>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            <?php } else {
+                echo "<h5 style='color: red; text-align: center;'>No Record Found</h5>";
+            }
+        } ?>
+    </div>
 </div>
 
-<div class="row">
-<div class="col-lg-4 mb-4">
-<div><input type="submit" name="sub" class="btn btn-primary" value="submit" style="cursor:pointer"></div>
+    </div>
 </div>
-</div>
-       <!-- /.row -->
-</form>
 
-	<div class="agileits-contact py-5">
-		<div class="py-xl-5 py-lg-3">
-			<?php
-				if(isset($_POST['sub']))
-{
-$status=1;
-$bloodgroup=$_POST['bloodgroup'];
-$location=$_POST['location']; 
-
-$sql = "SELECT * from tblblooddonars where (status=:status and BloodGroup=:bloodgroup) ||  (Address=:location)";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':status',$status,PDO::PARAM_STR);
-$query->bindParam(':bloodgroup',$bloodgroup,PDO::PARAM_STR);
-$query->bindParam(':location',$location,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{ ?>
-
-			<div class="w3ls-titles text-center mb-5">
-				<h3 class="title">Search Blood Donor</h3>
-				<span>
-					<i class="fas fa-user-md"></i>
-				</span>
-			
-			</div>
-			<div class="d-flex">
-				
-				<div class="row package-grids mt-5" style="padding-left: 50px;">
-			<?php	foreach($results as $result)
-{ ?>
-					<div class="col-md-6 pricing">
-					
-					<div class="price-top">
-						<a href="single.html">
-							<img src="images/blood-donor.jpg" alt="Blood Donor" style="border:1px #000 solid" class="img-fluid" />
-						</a>
-						<h3><?php echo htmlentities($result->FullName);?>
-						</h3>
-					</div>
-					<div class="price-bottom p-4">
-				<table class="table table-bordered">
-
-    <tbody>
-      <tr>
-        <th>Gender</th>
-        <td><?php echo htmlentities($result->Gender);?></td>
-      </tr>
-      <tr>
-        <td>Blood Group</td>
-        <td><?php echo htmlentities($result->BloodGroup);?></td>
-      </tr>
-      <tr>
-        <td>Mobile No.</td>
-        <td><?php echo htmlentities($result->MobileNumber);?></td>
-      </tr>
-
-         <tr>
-        <td>Email ID</td>
-        <td><?php echo htmlentities($result->EmailId);?></td>
-      </tr>
-
-               <tr>
-        <td>Age</td>
-        <td><?php echo htmlentities($result->Age);?></td>
-      </tr>
-
-        <tr>
-        <td>Address</td>
-        <td><?php echo htmlentities($result->Address);?></td>
-      </tr>
-
-<tr>
-        <td>Message</td>
-        <td><?php echo htmlentities($result->Message);?></td>
-      </tr>
-
-    </tbody>
-</table>
-						<a class="btn btn-primary" style="color:#fff"  href="contact-blood.php?cid=<?php echo $result->id;?>">Request</a>
-					</div>
-				</div> <?php }}
-else
-{
-echo htmlentities("No Record Found");
-
-}
-
-
-            } ?>
-			
-			
-			</div>
-			</div>
-		</div>
-	</div>
-	<!-- //contact -->
-
-	
 
 
 	<?php include('includes/footer.php');?>

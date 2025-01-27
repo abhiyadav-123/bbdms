@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['alogin'])==0)
-	{	
+{	
 header('location:index.php');
 }
 else{
@@ -93,9 +93,9 @@ $msg="Info Updateed successfully";
 									<div class="panel-body">
 										<form method="post" name="chngpwd" class="form-horizontal" onSubmit="return valid();">
 										
-											
-  	        	  <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
+												<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+				
 				<?php $sql = "SELECT * from  tblcontactusinfo ";
 $query = $dbh -> prepare($sql);
 $query->execute();
@@ -109,30 +109,35 @@ foreach($results as $result)
 				<div class="form-group">
 												<label class="col-sm-4 control-label"> Address</label>
 												<div class="col-sm-8">
-													<textarea class="form-control" name="address" id="address" required><?php echo htmlentities($result->Address);?></textarea>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+														<textarea class="form-control" name="address" id="address" required><?php echo htmlentities($result->Address);?></textarea>
+													</div>
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-4 control-label"> Email id</label>
 												<div class="col-sm-8">
-													<input type="email" class="form-control" name="email" id="email" value="<?php echo htmlentities($result->EmailId);?>" required>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+														<input type="email" class="form-control" name="email" id="email" value="<?php echo htmlentities($result->EmailId);?>" required>
+													</div>
 												</div>
 											</div>
-<div class="form-group">
+											<div class="form-group">
 												<label class="col-sm-4 control-label"> Contact Number </label>
 												<div class="col-sm-8">
-													<input type="text" class="form-control" value="<?php echo htmlentities($result->ContactNo);?>" name="contactno" id="contactno" required>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+														<input type="text" class="form-control" value="<?php echo htmlentities($result->ContactNo);?>" name="contactno" id="contactno" required>
+													</div>
 												</div>
 											</div>
 <?php }} ?>
 											<div class="hr-dashed"></div>
 											
-										
-								
-											
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-4">
-								
 													<button class="btn btn-primary" name="submit" type="submit">Update</button>
 												</div>
 											</div>
@@ -145,12 +150,9 @@ foreach($results as $result)
 							
 						</div>
 						
-					
-
 					</div>
 				</div>
 				
-			
 			</div>
 		</div>
 	</div>
